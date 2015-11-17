@@ -16,5 +16,6 @@ extension Todo {
 
     @NSManaged var name: String?
     @NSManaged var completed: Bool
+    @NSManaged var tag: Int16
 
 }

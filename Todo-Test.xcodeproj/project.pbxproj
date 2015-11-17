@@ -16,6 +16,10 @@
 		7B139C251BF9078600F1D281 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B139C241BF9078600F1D281 /* TodoManager.swift */; };
 		7B139C2F1BF9101900F1D281 /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B139C2D1BF9101900F1D281 /* Todo+CoreDataProperties.swift */; };
 		7B139C301BF9101900F1D281 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B139C2E1BF9101900F1D281 /* Todo.swift */; };
+		7B139C341BFB990B00F1D281 /* tag-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B139C311BFB990B00F1D281 /* tag-0.png */; };
+		7B139C351BFB990B00F1D281 /* tag-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B139C321BFB990B00F1D281 /* tag-1.png */; };
+		7B139C361BFB990B00F1D281 /* tag-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B139C331BFB990B00F1D281 /* tag-2.png */; };
+		7B139C391BFBBAD900F1D281 /* TagType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B139C381BFBBAD900F1D281 /* TagType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		7B139C241BF9078600F1D281 /* TodoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
 		7B139C2D1BF9101900F1D281 /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7B139C2E1BF9101900F1D281 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		7B139C311BFB990B00F1D281 /* tag-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tag-0.png"; sourceTree = "<group>"; };
+		7B139C321BFB990B00F1D281 /* tag-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tag-1.png"; sourceTree = "<group>"; };
+		7B139C331BFB990B00F1D281 /* tag-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tag-2.png"; sourceTree = "<group>"; };
+		7B139C381BFBBAD900F1D281 /* TagType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +70,10 @@
 		7B139C0E1BF9073300F1D281 /* Todo-Test */ = {
 			isa = PBXGroup;
 			children = (
+				7B139C371BFB991200F1D281 /* Icons */,
 				7B139C0F1BF9073300F1D281 /* AppDelegate.swift */,
 				7B139C111BF9073300F1D281 /* ViewController.swift */,
+				7B139C381BFBBAD900F1D281 /* TagType.swift */,
 				7B139C131BF9073300F1D281 /* Main.storyboard */,
 				7B139C2C1BF90FD100F1D281 /* Todo */,
 				7B139C241BF9078600F1D281 /* TodoManager.swift */,
@@ -82,6 +92,17 @@
 				7B139C2E1BF9101900F1D281 /* Todo.swift */,
 			);
 			name = Todo;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7B139C371BFB991200F1D281 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				7B139C311BFB990B00F1D281 /* tag-0.png */,
+				7B139C321BFB990B00F1D281 /* tag-1.png */,
+				7B139C331BFB990B00F1D281 /* tag-2.png */,
+			);
+			name = Icons;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -143,8 +164,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B139C361BFB990B00F1D281 /* tag-2.png in Resources */,
 				7B139C1D1BF9073300F1D281 /* LaunchScreen.storyboard in Resources */,
 				7B139C1A1BF9073300F1D281 /* Assets.xcassets in Resources */,
+				7B139C351BFB990B00F1D281 /* tag-1.png in Resources */,
+				7B139C341BFB990B00F1D281 /* tag-0.png in Resources */,
 				7B139C151BF9073300F1D281 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +186,7 @@
 				7B139C101BF9073300F1D281 /* AppDelegate.swift in Sources */,
 				7B139C181BF9073300F1D281 /* Todo_Test.xcdatamodeld in Sources */,
 				7B139C2F1BF9101900F1D281 /* Todo+CoreDataProperties.swift in Sources */,
+				7B139C391BFBBAD900F1D281 /* TagType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +334,7 @@
 				7B139C231BF9073300F1D281 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

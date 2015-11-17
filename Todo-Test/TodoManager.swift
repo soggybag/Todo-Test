@@ -23,7 +23,7 @@
 //      updates the data store, making it possible to retreive the data later. 
 //      add a save method.
 // 9) Edit add todo. Here we need to make a new Managed Object.
-// 10) Edit removeTodoAtIndex(). Here you remove the todo from the array, but you'll 
+// 10) Edit removeTodoAtIndex(). Here you remove the todo from the array, but you'll
 //      also need to remove the entity from the context, and save the context.
 
 
@@ -111,6 +111,13 @@ class TodoManager {
             // Check for an error. Print the error message.
             print("Error saving:\(error), \(error.userInfo)")
         }
+    }
+    
+    
+    func setTagForTodoAtIndex(index: Int, tagType: TagType) {
+        let todo = getTodoAtIndex(index)
+        todo.tag = Int16(tagType.rawValue)
+        save()
     }
     
     

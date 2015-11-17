@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     
     // MARK: IBOutlets
     
@@ -19,6 +18,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: IBActions
     
+    @IBAction func addNewCellButtonTapped(sender: UIButton) {
+        print("Add New Cell button")
+        addTodo()
+    }
     @IBAction func addButtonTapped(sender: UIBarButtonItem) {
         addTodo()
     }
@@ -47,16 +50,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: TableView Datasource
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // return 2 sections
+        return 2
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return 1
+        }
         return TodoManager.sharedInstance.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
+        var cellId = "cell"
+        if indexPath.section == 1 {
+            cellId = "lastCell"
+        }
         
-        let todo = TodoManager.sharedInstance.getTodoAtIndex(indexPath.row)
-        cell.textLabel?.text = todo.name
-        setCellAccessory(cell, forCompletedState: todo.completed)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellId)!
+        
+        if cellId == "cell" {
+            let todo = TodoManager.sharedInstance.getTodoAtIndex(indexPath.row)
+            cell.textLabel?.text = todo.name
+            cell.detailTextLabel?.text = "\(todo.tag)"
+            setCellAccessory(cell, forCompletedState: todo.completed)
+            cell.imageView?.image = UIImage(named: "tag-\(todo.tag)")
+            self.setCellColorForTag(TagType(rawValue: Int(todo.tag))!, cell: cell)
+        } else {
+            
+        }
         
         return cell
     }
@@ -70,10 +93,57 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            TodoManager.sharedInstance.removeTodoAtIndex(indexPath.row)
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+            deleteRowAtIndexPath(indexPath)
         }
     }
+    
+    func deleteRowAtIndexPath(indexPath: NSIndexPath) {
+        TodoManager.sharedInstance.removeTodoAtIndex(indexPath.row)
+        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Left)
+    }
+    
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .Normal, title: "Delete") { (action: UITableViewRowAction, indexPath: NSIndexPath) -> Void in
+            self.deleteRowAtIndexPath(indexPath)
+        }
+        delete.backgroundColor = UIColor.redColor()
+        
+        let tag1 = UITableViewRowAction(style: .Normal, title: "Tag A") { (action: UITableViewRowAction, index: NSIndexPath) -> Void in
+            // Set the tag
+            self.setTag(.Tag1, index: indexPath.row)
+            self.setCellColorForTag(.Tag1, cell: self.tableView.cellForRowAtIndexPath(indexPath)!)
+        }
+        tag1.backgroundColor = TagType.Tag1.tagColor()
+        
+        let tag2 = UITableViewRowAction(style: .Normal, title: "Tag b") { (action: UITableViewRowAction, index: NSIndexPath) -> Void in
+            // Set the tag
+            self.setTag(.Tag2, index: indexPath.row)
+            self.setCellColorForTag(.Tag2, cell: self.tableView.cellForRowAtIndexPath(indexPath)!)
+        }
+        tag2.backgroundColor = TagType.Tag2.tagColor()
+        
+        let tag3 = UITableViewRowAction(style: .Normal, title: "Tag C") { (action: UITableViewRowAction, index: NSIndexPath) -> Void in
+            // Set the tag
+            self.setTag(.Tag3, index: indexPath.row)
+            self.setCellColorForTag(.Tag3, cell: self.tableView.cellForRowAtIndexPath(indexPath)!)
+        }
+        tag3.backgroundColor = TagType.Tag3.tagColor()
+        
+        return [delete, tag1, tag2, tag3]
+    }
+    
+    func setTag(tag: TagType, index: Int) {
+        TodoManager.sharedInstance.setTagForTodoAtIndex(index, tagType: tag)
+        tableView.editing = false
+        tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+    }
+    
+    func setCellColorForTag(tag: TagType, cell: UITableViewCell) {
+        cell.backgroundColor = tag.tagColor()
+    }
+    
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)!
@@ -109,7 +179,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

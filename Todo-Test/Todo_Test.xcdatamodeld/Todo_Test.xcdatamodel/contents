@@ -3,8 +3,9 @@
     <entity name="Todo" representedClassName=".Todo" syncable="YES">
         <attribute name="completed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Todo" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Todo" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>
