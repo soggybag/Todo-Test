@@ -60,7 +60,7 @@ class TodoManager {
     
     // MARK: Public Methods 
     
-    // 10) Since Todo is now a managed object We need to make these. 
+    // 9) Since Todo is now a managed object We need to make these.
     func addTodoWithName(name: String) {
         // Make a new entity. Supply the entity name, and context.
         let todo = NSEntityDescription.insertNewObjectForEntityForName("Todo", inManagedObjectContext: context) as! Todo
@@ -77,7 +77,7 @@ class TodoManager {
         return todos[index]
     }
     
-    // 11) Remove todo.
+    // 10) Remove todo.
     func removeTodoAtIndex(index: Int) {
         // Remove the entity from the context
         self.context.deleteObject(getTodoAtIndex(index))
@@ -85,7 +85,7 @@ class TodoManager {
         save() // save the context
     }
     
-    // 8) Use this method to fetch daved todo items.
+    // 7) Use this method to fetch daved todo items.
     func fetchTodos() {
         // Make a fetch request
         let fetchRequest = NSFetchRequest(entityName: "Todo")
@@ -101,7 +101,7 @@ class TodoManager {
         }
     }
     
-    // 9) This method saves changes to any objects managed by the context
+    // 8) This method saves changes to any objects managed by the context
     func save() {
         // Use the do, try, and catch block here to check for errors.
         do {
