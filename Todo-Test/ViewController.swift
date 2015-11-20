@@ -92,6 +92,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return TodoManager.sharedInstance.count
     }
     
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Todo Items"
+        } else {
+            return "Add a new todo"
+        }
+    }
+    
     // There two different cell types. One for todos, and the other for the cell with the 
     // new button. Check indexPath.section to find the section the table view is asking for
     // and use the correct id, to generate correct cell type.
@@ -243,6 +252,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
     }
 
     override func didReceiveMemoryWarning() {

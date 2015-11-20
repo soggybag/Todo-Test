@@ -29,7 +29,7 @@ enum TagType: Int {
     func tagColor() -> UIColor {
         switch self {
         case .Tag1 :
-            return UIColor.blueColor()
+            return UIColor(red: 230/255, green: 35/255, blue: 123/255, alpha: 1)
             
         case .Tag2 :
             return UIColor.redColor()
@@ -39,3 +39,7 @@ enum TagType: Int {
         }
     }
 }
+
+
+
+
